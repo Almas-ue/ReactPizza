@@ -21,4 +21,4 @@ npm start
 Open http://localhost:3000 with your browser to see the result.
 
 ## React-Pizza version: 0.0.1
-Пустой проект с React с Webpack.
+Пустой проект с React с Vite.
