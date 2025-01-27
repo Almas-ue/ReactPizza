@@ -8,7 +8,7 @@
 - normalize.css
 - Snadcn
 - Tailwind
-- Webpack
+- Vite
 - Lucide React
 - React-Hook-Form
 
@@ -17,8 +17,12 @@
 ```
 npm start
 ```
+    "postcss": "^8",
 
 Open http://localhost:3000 with your browser to see the result.
 
 ## React-Pizza version: 0.0.1
-Пустой проект с React с Vite.
+Пустой проект React с Vite.
+
+## React-Pizza version: 0.1.0
+Установлены и настроены все необходимые нужные библиотеки.
