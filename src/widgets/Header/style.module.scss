@@ -1,0 +1,9 @@
+.inputSearch {
+  background-color: #f9f9f9;
+  outline: none;
+
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
