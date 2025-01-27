@@ -17,7 +17,6 @@
 ```
 npm start
 ```
-    "postcss": "^8",
 
 Open http://localhost:3000 with your browser to see the result.
 
@@ -26,3 +25,14 @@ Open http://localhost:3000 with your browser to see the result.
 
 ## React-Pizza version: 0.1.0
 Установлены и настроены все необходимые нужные библиотеки.
+
+## React-Pizza version: 0.1.1
+Исправлены проблемы связанные с tailwind
+- Добавлен postcss.
+
+## React-Pizza: 0.2.0
+Добавлены базовын компоненты header, были добавлены: 
+- Логотип
+- Поиск
+- Кнопка войти
+- Кнопка корзина
