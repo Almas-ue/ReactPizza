@@ -27,8 +27,8 @@ const Header = () => {
             />
           </div>
           <div className="entitles flex items-center gap-[15px]">
-            <Button className="" variant="default"><User /> Log in</Button>
-            <Button className=""><ShoppingCart /></Button>
+            <Button className="" variant="outline"><User /> Log in</Button>
+            <Button className="" variant="outline"><ShoppingCart /></Button>
           </div>
         </div>
       </Container>
