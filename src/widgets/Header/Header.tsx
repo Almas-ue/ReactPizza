@@ -4,21 +4,22 @@ import { ShoppingCart, User } from 'lucide-react';
 
 import styles from "./style.module.scss";
 import logo from "./images/logo.svg";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
   return (
     <header>
       <Container>
-        <div className="headerInner flex justify-between py-[42px] items-center">
+        <div className="flex justify-between py-[42px] items-center">
           <div className="logo">
             <a href="/">
               <img src={logo} alt="logo" />
             </a>
           </div>
-          <div className="inputSearch">
+          <div className="inputSearch inline-flex">
             <input
               className={
-                styles.inputSearch + " w-[765px] py-3 pl-5 rounded-[15px]"
+                styles.inputSearch + " flex max-w-[765px] py-3 pl-5 rounded-[15px]"
               }
               type="search"
               id="search"
@@ -26,8 +27,8 @@ const Header = () => {
             />
           </div>
           <div className="entitles flex items-center gap-[15px]">
-            <Button className=""><User /> Log in</Button>
-            <Button><ShoppingCart /></Button>
+            <Button className="" variant="default"><User /> Log in</Button>
+            <Button className=""><ShoppingCart /></Button>
           </div>
         </div>
       </Container>
