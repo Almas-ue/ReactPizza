@@ -10,13 +10,13 @@ const Header = () => {
   return (
     <header className="border-b">
       <Container>
-        <div className="flex justify-between py-[42px] items-center">
-          <div className="logo mr-10">
+        <div className="flex justify-between my-[42px] items-center">
+          <div className="logo">
             <a href="/">
-              <img src={logo} alt="logo" />
+              <img src={logo} alt="logo" className="h-12 w-max" />
             </a>
           </div>
-          <div className="w-[765px] mr-[65px]">
+          <div className="w-[765px] mx-[42px]">
             <Input
               type="search"
               className=" h-[50px] py-3 border-none bg-[#f9f9f9] pl-5 rounded-[15px]"

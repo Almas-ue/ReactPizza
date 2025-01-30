@@ -72,14 +72,20 @@
 
 @font-face {
     font-family: Nunito;
-    src: url("./../fonts/Nunito-Bold.ttf") format('truetype');
+    src: url("./../fonts/Nunito-ExtraBold.ttf") format('truetype');
     font-weight: 700;
 }
 
 @font-face {
     font-family: Nunito;
-    src: url("./../fonts/Nunito-SemiBold.ttf");
+    src: url("./../fonts/Nunito-Bold.ttf") format('truetype');
     font-weight: 600;
+}
+
+@font-face {
+    font-family: Nunito;
+    src: url("./../fonts/Nunito-SemiBold.ttf");
+    font-weight: 500;
 }
 
 @font-face {
@@ -88,6 +94,12 @@
     font-weight: 400;
 }
 
-*{
+* {
     font-family: Nunito;
+}
+
+.container {
+    @media screen and (max-width: 1280px) {
+        padding-inline: 20px;
+    }
 }

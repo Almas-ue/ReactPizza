@@ -1,12 +1,12 @@
-import { Children, ReactElement } from "react"
+import { ReactNode } from "react"
 
 type Props = {
-    children: JSX.Element,
+    children: ReactNode,
 }
 
 const Container: React.FC<Props> = ({ children }) => {
     return (
-        <div className="container max-w-[1245px] mx-auto">
+        <div className="container max-w-[1245px] h-full mx-auto">
             {children}
         </div>
     )
