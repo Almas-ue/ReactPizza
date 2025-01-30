@@ -36,3 +36,7 @@ Open http://localhost:3000 with your browser to see the result.
 - Поиск
 - Кнопка войти
 - Кнопка корзина
+
+## React-Pizza: 0.2.2
+- Изменены стили shadcn-ui подходящий для проекта.
+- Добавлен шрифт Nunito.

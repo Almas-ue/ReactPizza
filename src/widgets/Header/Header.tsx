@@ -1,34 +1,32 @@
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/container";
+import { Input } from "@/components/ui/input";
+
 import { ShoppingCart, User } from 'lucide-react';
 
-import styles from "./style.module.scss";
 import logo from "./images/logo.svg";
-import { cn } from "@/lib/utils";
 
 const Header = () => {
   return (
-    <header>
+    <header className="border-b">
       <Container>
         <div className="flex justify-between py-[42px] items-center">
-          <div className="logo">
+          <div className="logo mr-10">
             <a href="/">
               <img src={logo} alt="logo" />
             </a>
           </div>
-          <div className="inputSearch inline-flex">
-            <input
-              className={
-                styles.inputSearch + " flex max-w-[765px] py-3 pl-5 rounded-[15px]"
-              }
+          <div className="w-[765px] mr-[65px]">
+            <Input
               type="search"
+              className=" h-[50px] py-3 border-none bg-[#f9f9f9] pl-5 rounded-[15px]"
               id="search"
               placeholder="Поиск пиццы..."
             />
           </div>
           <div className="entitles flex items-center gap-[15px]">
-            <Button className="" variant="outline"><User /> Log in</Button>
-            <Button className="" variant="outline"><ShoppingCart /></Button>
+            <Button className="rounded-[15px] px-[14px] py-[22px] font-semibold" variant="outline"><User />Войти</Button>
+            <Button className="rounded-[15px] px-[14px] py-[22px] font-semibold" variant="outline"><ShoppingCart /></Button>
           </div>
         </div>
       </Container>
