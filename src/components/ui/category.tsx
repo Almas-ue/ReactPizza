@@ -11,7 +11,12 @@ const Category: FC<CategoryName> = ({ categoryList }) => {
         <div className="inline-flex gap-1 p-[5px] rounded-2xl bg-[#F5F5F5]">
             {categoryList && categoryList.map((name, index) => (
                 <>
-                    <button key={index} onClick={() => setActive(name)} className={cn("px-6 py-3 rounded-2xl", isActive === name ? "bg-white text-[#FE5F00]" : "")}>{name}</button >
+                    <button
+                        key={index}
+                        onClick={() => setActive(name)}
+                        className={cn("px-6 py-3 rounded-2xl font-semibold", isActive === name ? "bg-white text-[#FE5F00]" : "")}>
+                        {name}
+                    </button >
                 </>
             ))
             }
