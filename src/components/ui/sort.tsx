@@ -14,8 +14,8 @@ const Sort = () => {
     return (
         <Menubar className="border-0 bg-[#F5F5F5] rounded-2xl h-[55px]">
             <MenubarMenu>
-                <MenubarTrigger className="py-4">
-                    <ChevronsUpDown className="size-5 pr-1 font-normal" />Сортировка: <span className="text-[#FE5F00] pl-2">{sortName}</span>
+                <MenubarTrigger className="py-4 font-semibold text-base">
+                    <ChevronsUpDown className="size-5 pr-1" />Сортировка: <span className="text-[#FE5F00] pl-2">{sortName}</span>
                 </MenubarTrigger>
                 <MenubarContent>
                     <MenubarItem onClick={() => setSortName("Возрастанию")}>
