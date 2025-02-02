@@ -8,7 +8,7 @@ const Categorias = () => {
         <>
             <Container>
                 <h1 className="text-[36px] font-bold mt-10">Все пиццы</h1>
-                <div className="flex justify-between mt-5">
+                <div className="flex justify-between items-center mt-5">
                     <Category categoryList={names} />
                     <Sort />
                 </div>

@@ -15,7 +15,7 @@ const Category: FC<CategoryName> = ({ categoryList }) => {
                     <button
                         key={index}
                         onClick={() => setActive(name)}
-                        className={`${btnStyle} ${isActive === name ? "bg-white text-[#FE5F00] shadow-sm" : ""}`}>
+                        className={`${btnStyle} ${isActive === name ? "bg-white text-primary shadow-sm" : ""}`}>
                         {name}
                     </button >
                 </>
@@ -23,7 +23,6 @@ const Category: FC<CategoryName> = ({ categoryList }) => {
             }
             <button className={`${btnStyle}`}>Ещё</button>
         </div >
-
     )
 }
 
