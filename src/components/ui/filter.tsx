@@ -30,7 +30,6 @@ const Filter = () => {
                 </div>
                 <Button className="rounded-[18px] text-base font-semibold h-[50px]">Применить</Button>
             </div>
-
         </aside>
     )
 }
