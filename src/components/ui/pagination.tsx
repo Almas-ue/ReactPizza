@@ -52,7 +52,7 @@ const PaginationLink = ({
         variant: isActive ? "outline" : "ghost",
         size,
       }),
-      "rounded-2xl border border-[#EDEDED/90] text-[#888888]",
+      "size-[45px] rounded-2xl border border-[#EDEDED/90] text-[#888888]",
       className
     )}
     {...props}
@@ -67,7 +67,7 @@ const PaginationPrevious = ({
   <PaginationLink
     aria-label="Go to previous page"
     size="default"
-    className={cn("rounded-2xl border border-[#EDEDED/90] text-[#888888]", className)}
+    className={cn("size-[45px] rounded-2xl border border-[#EDEDED/90] text-[#888888]", className)}
     {...props}
   >
     <ChevronLeft className="h-4 w-4" />
@@ -82,7 +82,7 @@ const PaginationNext = ({
   <PaginationLink
     aria-label="Go to next page"
     size="default"
-    className={cn("rounded-2xl border border-[#EDEDED/90] text-[#888888]", className)}
+    className={cn("size-[45px] rounded-2xl border border-[#EDEDED/90] text-[#888888]", className)}
     {...props}
   >
     <ChevronRight className="h-4 w-4" />

@@ -55,3 +55,8 @@ Open http://localhost:3000 with your browser to see the result.
 - Добавлен компонент Card
 - Добавлен компонент Pagination
 - Стилизованы компонент Card
+  
+## React-Pizza 0.5.3
+- Пофиксил дизайн Card
+- Пофиксил дизайн Pagination
+- Тестовая функциональность в Pagination

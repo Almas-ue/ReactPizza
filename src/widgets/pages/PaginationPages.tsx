@@ -1,3 +1,4 @@
+import { buttonVariants } from "@/components/ui/button";
 import {
     Pagination,
     PaginationContent,
@@ -7,24 +8,34 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination"
+import { cn } from "@/lib/utils";
 import { useState } from "react"
 
 const PaginationPages = () => {
-    const [defPage, setDefPage] = useState(1);
+    const [defPage, setDefPage] = useState<number>(1);
+    const [lastPage, setLastPage] = useState<number>(5);
+
     return (
         <Pagination className="">
             <PaginationContent>
                 <PaginationItem className="">
-                    <PaginationPrevious isActive={defPage === 1 ? false : true} href="#" />
+                    <PaginationPrevious
+                        isActive={defPage <= 1 ? false : true}
+                        className={cn(defPage === 1 ? "cursor-auto hover:text-[#888888]" : "rounded-2xl border border-primary text-primary")}
+                        href="#" />
                 </PaginationItem>
                 <PaginationItem>
-                    <PaginationLink isActive={false} href="#">1</PaginationLink>
+                    <PaginationLink onClick={() => setDefPage(1)} href="#" className="hover:text-primary hover:font-bold hover:border-primary">1</PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
                     <PaginationEllipsis />
                 </PaginationItem>
                 <PaginationItem>
-                    <PaginationNext href="#" />
+                    <PaginationLink onClick={() => setDefPage(lastPage)} href="#">{lastPage}</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationNext isActive={defPage === 1 ? false : true}
+                        className={cn(defPage < lastPage ? "border border-primary text-primary" : "")} href="#" />
                 </PaginationItem>
             </PaginationContent>
         </Pagination>
