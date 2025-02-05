@@ -1,4 +1,3 @@
-import { buttonVariants } from "@/components/ui/button";
 import {
     Pagination,
     PaginationContent,
@@ -21,7 +20,7 @@ const PaginationPages = () => {
                 <PaginationItem className="">
                     <PaginationPrevious
                         isActive={defPage <= 1 ? false : true}
-                        className={cn(defPage === 1 ? "cursor-auto hover:text-[#888888]" : "rounded-2xl border border-primary text-primary")}
+                        className={cn(defPage === 1 ? "cursor-not-allowed hover:text-[#888888]" : "border border-primary text-primary")}
                         href="#" />
                 </PaginationItem>
                 <PaginationItem>
@@ -34,8 +33,10 @@ const PaginationPages = () => {
                     <PaginationLink onClick={() => setDefPage(lastPage)} href="#">{lastPage}</PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                    <PaginationNext isActive={defPage === 1 ? false : true}
-                        className={cn(defPage < lastPage ? "border border-primary text-primary" : "")} href="#" />
+                    <PaginationNext
+                        isActive={defPage >= lastPage ? false : true}
+                        className={cn(defPage < lastPage ? "border border-primary text-primary" : "cursor-not-allowed hover:text-[#888888]")}
+                        href="#" />
                 </PaginationItem>
             </PaginationContent>
         </Pagination>
