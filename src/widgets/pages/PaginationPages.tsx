@@ -1,3 +1,6 @@
+import { FC, useState } from "react"
+import { cn } from "@/lib/utils";
+
 import {
     Pagination,
     PaginationContent,
@@ -7,15 +10,19 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination"
-import { cn } from "@/lib/utils";
-import { useState } from "react"
 
-const PaginationPages = () => {
+interface props {
+    className: string;
+    countPage: number;
+}
+
+const PaginationPages: FC<props> = ({ countPage, className }) => {
     const [defPage, setDefPage] = useState<number>(1);
-    const [lastPage, setLastPage] = useState<number>(5);
+    const countPages: number = countPage;
+    const [lastPage, setLastPage] = useState<number>(countPages);
 
     return (
-        <Pagination className="">
+        <Pagination className={className}>
             <PaginationContent>
                 <PaginationItem className="">
                     <PaginationPrevious
@@ -26,9 +33,13 @@ const PaginationPages = () => {
                 <PaginationItem>
                     <PaginationLink onClick={() => setDefPage(1)} href="#" className="hover:text-primary hover:font-bold hover:border-primary">1</PaginationLink>
                 </PaginationItem>
-                <PaginationItem>
-                    <PaginationEllipsis />
-                </PaginationItem>
+                {
+                    countPages > 4 ? (
+                        <PaginationItem>
+                            <PaginationEllipsis />
+                        </PaginationItem>
+                    ) : null
+                }
                 <PaginationItem>
                     <PaginationLink onClick={() => setDefPage(lastPage)} href="#">{lastPage}</PaginationLink>
                 </PaginationItem>

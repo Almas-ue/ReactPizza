@@ -15,9 +15,8 @@ const App = () => {
         <Filter />
         <Pizzas />
       </Container>
-      <Container className='pt-[70px] pb-[58px]'>
-        <PaginationPages />
-      </Container>
+      {/* <Container className=''>
+      </Container> */}
     </>
   )
 }
