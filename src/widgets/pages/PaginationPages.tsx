@@ -14,12 +14,12 @@ import {
 interface props {
     className: string;
     countPage: number;
+    lastPage: number;
 }
 
-const PaginationPages: FC<props> = ({ countPage, className }) => {
+const PaginationPages: FC<props> = ({ countPage, lastPage, className }) => {
     const [defPage, setDefPage] = useState<number>(1);
     const countPages: number = countPage;
-    const [lastPage, setLastPage] = useState<number>(countPages);
 
     return (
         <Pagination className={className}>

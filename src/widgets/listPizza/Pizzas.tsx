@@ -9,10 +9,13 @@ interface props {
 }
 
 const Pizzas: FC<props> = ({ className }) => {
+    const cardCount = 6;
+    const last = Math.ceil(pizzas.length / cardCount);
+
     return (
         <div className={cn("mt-7 flex flex-wrap justify-between gap-y-[50px]", className)}>
-            <Card listProduct={pizzas} />
-            <PaginationPages countPage={pizzas.length} className="pb-[58px]" />
+            <Card listProduct={pizzas} countList={cardCount} />
+            <PaginationPages countPage={pizzas.length} lastPage={last} className="pb-[58px]" />
         </div>
     )
 }
