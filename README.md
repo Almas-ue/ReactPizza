@@ -60,3 +60,6 @@ Open http://localhost:3000 with your browser to see the result.
 - Пофиксил дизайн Card
 - Пофиксил дизайн Pagination
 - Тестовая функциональность в Pagination
+
+## React-Pizza 0.5.4
+- Исправил логику pagination
