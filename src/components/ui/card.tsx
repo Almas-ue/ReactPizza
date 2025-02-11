@@ -16,7 +16,6 @@ interface props {
 const Card: FC<props> = ({ listProduct, countList }) => {
     return (
         listProduct.map((item, index) => {
-
             if (index < countList) return (
                 <div key={index} className="w-[285px] block">
                     <a href="" className="bg-[#FFF7EE] px-9 py-6 rounded-2xl block">

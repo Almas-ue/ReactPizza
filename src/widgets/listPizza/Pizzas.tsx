@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { cn } from "@/lib/utils";
 import Card from "@/components/ui/card"
 import { pizzas } from "./listpizza"
@@ -9,13 +9,19 @@ interface props {
 }
 
 const Pizzas: FC<props> = ({ className }) => {
+    const [currentPage, setCurrentPage] = useState(1);
     const cardCount = 6;
-    const last = Math.ceil(pizzas.length / cardCount);
+    const countPage = Math.ceil(pizzas.length / cardCount);
+
+    const currentItems = pizzas.slice(
+        (currentPage - 1) * cardCount,
+        currentPage * cardCount
+    );
 
     return (
         <div className={cn("mt-7 flex flex-wrap justify-between gap-y-[50px]", className)}>
-            <Card listProduct={pizzas} countList={cardCount} />
-            <PaginationPages countPage={pizzas.length} lastPage={last} className="pb-[58px]" />
+            <Card listProduct={currentItems} countList={cardCount} />
+            <PaginationPages countPage={countPage} lastPage={countPage} currentPage={currentPage} paginate={setCurrentPage} className="pb-[58px]" />
         </div>
     )
 }
