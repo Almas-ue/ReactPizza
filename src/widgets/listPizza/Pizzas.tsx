@@ -21,7 +21,7 @@ const Pizzas: FC<props> = ({ className }) => {
     return (
         <div className={cn("mt-7 flex flex-wrap justify-between gap-y-[50px]", className)}>
             <Card listProduct={currentItems} countList={cardCount} />
-            <PaginationPages countPage={countPage} lastPage={countPage} currentPage={currentPage} paginate={setCurrentPage} className="pb-[58px]" />
+            <PaginationPages countPage={countPage} currentPage={currentPage} paginate={setCurrentPage} className="pb-[58px]" />
         </div>
     )
 }
