@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react"
+import { FC, useEffect, useState } from "react"
 import { cn } from "@/lib/utils";
 import { ChevronsLeft } from "lucide-react";
 
@@ -20,15 +20,21 @@ interface props {
 }
 
 const PaginationPages: FC<props> = ({ countPage, currentPage, paginate, className }) => {
-    const pagesArr: number[] = [];
+    const [pagesArr, setPages] = useState<any[]>([]);
     const lastPage: number = countPage;
 
     useEffect(() => {
-        for (let i = 1; i <= countPage - 1; i++) {
-            pagesArr.push(i);
+        let newPages: number[] = [];
+        if (currentPage < lastPage - 1) {
+            if (currentPage > 1) {
+                newPages.push(currentPage - 1);
+            }
+            newPages.push(currentPage, currentPage + 1);
+            setPages(newPages)
+        } else if (currentPage == lastPage) {
+            setPages([lastPage - 1 - 1, lastPage - 1])
         }
-        console.log(pagesArr)
-    })
+    }, [currentPage])
 
     return (
         <Pagination className={className}>
@@ -54,7 +60,9 @@ const PaginationPages: FC<props> = ({ countPage, currentPage, paginate, classNam
                 {
                     pagesArr && pagesArr.map((page) =>
                         <>
-                            <PaginationItem>
+                            <PaginationItem
+                                key={page}
+                            >
                                 <PaginationLink
                                     isActive={currentPage === page ? true : false}
                                     className={cn(currentPage === page ? "text-white" : "text-primary")}
@@ -66,7 +74,7 @@ const PaginationPages: FC<props> = ({ countPage, currentPage, paginate, classNam
                     )
                 }
                 {
-                    currentPage < lastPage - 1 ? (
+                    currentPage < lastPage - 1 - 1 ? (
                         <PaginationItem>
                             <PaginationEllipsis />
                         </PaginationItem>
@@ -89,7 +97,6 @@ const PaginationPages: FC<props> = ({ countPage, currentPage, paginate, classNam
                 </PaginationItem>
             </PaginationContent>
         </Pagination >
-
     )
 }
 

@@ -66,3 +66,6 @@ Open http://localhost:3000 with your browser to see the result.
   
 ## React-Pizza 0.5.5
 - Исправил логику pagination
+  
+## React-Pizza 0.6.0
+- Завершил Pagination

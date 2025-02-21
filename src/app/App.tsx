@@ -3,7 +3,6 @@ import Categorias from '../widgets/categorias'
 import Header from '../widgets/Header/Header'
 import Container from '@/components/ui/container'
 import Pizzas from '@/widgets/listPizza/Pizzas'
-import PaginationPages from '@/widgets/pages/PaginationPages'
 
 const App = () => {
 
