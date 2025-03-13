@@ -23,7 +23,7 @@ const Filter = () => {
                     <BoxLabel nameBox="Сырный соус" />
                     <BoxLabel nameBox="Моцарелла" />
                     <BoxLabel nameBox="Чеснок" />
-                    <BoxLabel nameBox="Солённые огурчики" />
+                    <BoxLabel nameBox="Солёные огурчики" />
                     <BoxLabel nameBox="Красный лук" />
                     <BoxLabel nameBox="Томаты" />
                     <button className="inline-flex w-max text-primary hover:text-primary/70">+ Показать всё</button>
