@@ -1,10 +1,10 @@
 import { Button } from "./button";
-import { FC, useContext, useEffect, useState } from "react";
+import { FC } from "react";
 
-type typeList = {
+export type typeList = {
   img: string;
   name: string;
-  category: string;
+  category: string[];
   ingredient: string;
   price: number;
 };
@@ -15,7 +15,7 @@ interface props {
   category?: string;
 }
 
-const Card: FC<props> = ({ listProduct, countList, category }) => {
+const Card: FC<props> = ({ listProduct, countList }) => {
   return listProduct.map((card, index) => {
     if (index < countList)
       return (

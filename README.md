@@ -72,3 +72,8 @@ Open http://localhost:3000 with your browser to see the result.
   
 ## React-Pizza 0.6.1
 - Добавил функциональность в category
+
+## React-Pizza 0.7.0
+-  Завершил Категорию
+-  Завершил доделал Сортировку
+-  Исправлена стиль карт-тело

@@ -1,8 +1,8 @@
-import React, { createContext, ReactNode, useState } from "react";
+import { createContext, FC, ReactNode, useState } from "react";
 
 type CategoryContextType = [string, (category: string) => void];
 
-export const categoryContext = createContext<CategoryContextType | undefined>(
+export const CategoryContext = createContext<CategoryContextType | undefined>(
   undefined
 );
 
@@ -15,14 +15,12 @@ export const categoryNames = [
   "С курицей",
 ];
 
-export const categoryProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
-  const [category, setCategory] = useState(categoryNames[5]);
+export const CategoryProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  const [category, setCategory] = useState(categoryNames[0]);
 
   return (
-    <categoryContext.Provider value={[category, setCategory]}>
+    <CategoryContext.Provider value={[category, setCategory]}>
       {children}
-    </categoryContext.Provider>
+    </CategoryContext.Provider>
   );
 };

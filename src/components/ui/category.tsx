@@ -1,9 +1,11 @@
-import { categoryContext } from "@/providers/categoryProvider";
-import { useState } from "react";
+import { CategoryContext } from "@/providers/categoryProvider";
+import { useContext } from "react";
 import { categoryNames } from "@/providers/categoryProvider";
 
 const Category = () => {
-  const [category, setCategory] = useState<unknown>(categoryContext);
+  const categoryData = useContext(CategoryContext);
+
+  const [category, setCategory]: any = categoryData ? categoryData : " ";
   const categoryList = categoryNames;
   const btnStyle = "px-6 py-3 rounded-2xl font-semibold";
 
