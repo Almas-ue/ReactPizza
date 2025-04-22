@@ -1,0 +1,92 @@
+{
+  pizza: [
+    {
+      img: "https://media.dodostatic.net/image/r:292x292/0195ca6c520972ac9e34cde863c1482c.avif",
+      name: "Сырный цыпленок",
+      category: ["С курицей"],
+      ingredient: "Курица, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок",
+      price: 395,
+    },
+    {
+      img: "https://media.dodostatic.net/image/r:292x292/11ee7d5f9d4f264d98d40bf411913db1.avif",
+      name: "Пепперони",
+      category: ["Мясные", "Острые"],
+      ingredient: "Пикантная пепперони, моцарелла, фирменный томатный соус",
+      price: 420,
+    },
+    {
+      img: "https://media.dodostatic.net/image/r:292x292/11ee7d5f909b2fc398eecbb0442c3c8f.avif",
+      name: "Барбекю",
+      category: ["Мясные", "С курицей"],
+      ingredient: "Курица, Мясо, красный лук, моцарелла, соус барбекю",
+      price: 450,
+    },
+    {
+      img: "https://media.dodostatic.net/image/r:292x292/11ee7d5fd087dfc0ad3589c12cb6d605.avif",
+      name: "Гавайская",
+      category: ["С курицей", "Сладкие"],
+      ingredient: "Курица, ананасы, моцарелла, фирменный томатный соус",
+      price: 410,
+    },
+    {
+      img: "https://media.dodostatic.net/image/r:292x292/11ee7d5f9a6b363082d450891d7fa8ac.avif",
+      name: "Мясная",
+      category: ["Мясные"],
+      ingredient: "Ветчина, мясо, пепперони, курица, моцарелла, фирменный томатный соус",
+      price: 470,
+    },
+    {
+      img: "https://media.dodostatic.net/image/r:292x292/11ee7d5f837255b58b25a62c60ffdb38.avif",
+      name: "Четыре сыра",
+      category: ["Веган"],
+      ingredient: "Моцарелла, пармезан, сыр чеддер, дор-блю, сливочный соус",
+      price: 440,
+    },
+    //last
+    {
+      img: "https://media.dodostatic.net/image/r:292x292/11ee7d5f837255b58b25a62c60ffdb38.avif",
+      name: "Четыре сыра",
+      ingredient: "Моцарелла, пармезан, сыр чеддер, дор-блю, сливочный соус",
+      price: 440,
+      category: ["Моцарелла", "Сырный соус"],
+    },
+    {
+      img: "https://picsum.photos/200/300?random=8",
+      name: "Сырный цыпленок",
+      ingredient: "Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок",
+      price: 395,
+      category: ["С курицей"],
+    },
+    {
+      img: "https://picsum.photos/200/300?random=9",
+      name: "Барбекю",
+      ingredient: "Цыпленок, бекон, красный лук, моцарелла, соус барбекю",
+      price: 450,
+      category: [
+        "Мясные",
+        "С курицей",
+      ],
+    },
+    {
+      img: "https://picsum.photos/200/300?random=10",
+      name: "Гавайская",
+      ingredient: "Цыпленок, ананасы, моцарелла, фирменный томатный соус",
+      price: 410,
+      category: ["С курицей"],
+    },
+    {
+      img: "https://picsum.photos/200/300?random=11",
+      name: "Мясная",
+      ingredient: "Ветчина, Мясо, пепперони, цыпленок, моцарелла, фирменный томатный соус",
+      price: 470,
+      category: ["Мясные"],
+    },
+    {
+      img: "https://media.dodostatic.net/image/r:292x292/11ee7d5f837255b58b25a62c60ffdb38.avif",
+      name: "Четыре сыра",
+      ingredient: "Моцарелла, пармезан, сыр чеддер, дор-блю, сливочный соус",
+      price: 440,
+      category: ["Веган"],
+    },
+  ],
+}
