@@ -11,6 +11,7 @@
 - Vite
 - Lucide React
 - React-Hook-Form
+- Zustand
 
 ### Для запуска проекта
 ---
