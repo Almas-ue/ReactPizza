@@ -1,19 +1,20 @@
-import Filter from "@/components/ui/filter";
+import Filter from "@/features/filter";
 import Categorias from "../widgets/categorias";
 import Header from "../widgets/Header/Header";
 import Container from "@/components/ui/container";
 import Pizzas from "@/widgets/listPizza/Pizzas";
 import React from "react";
-import { CategoryProvider } from "@/providers/categoryProvider";
 import SortCard from "@/providers/sortCard";
+import { Provider } from "react-redux";
+import store from "@/store/store";
 
 interface app {
-  categoryProvider: JSX.IntrinsicElements;
+  categoryProvider?: JSX.IntrinsicElements;
 }
 
 const App: React.FC<app> = () => {
   return (
-    <CategoryProvider>
+    <Provider store={store}>
       <SortCard>
         <Header />
         <Categorias />
@@ -22,7 +23,7 @@ const App: React.FC<app> = () => {
           <Pizzas />
         </Container>
       </SortCard>
-    </CategoryProvider>
+    </Provider>
   );
 };
 

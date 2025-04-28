@@ -1,6 +1,7 @@
 import { Button } from "./button";
 import { FC, useState } from "react";
 import ImgSkeleton from "./imgSkeleton";
+import { cn } from "@/lib/utils";
 
 export type typeList = {
   img: string;
@@ -15,17 +16,28 @@ interface props {
   index: number;
   card: typeList;
   category?: string;
+  link?: string;
+  className?: string;
 }
 
-const Card: FC<props> = ({ index, countList, card }) => {
+const Card: FC<props> = ({ index, countList, card, link, className }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   if (index >= countList) return null;
 
   return (
-    <div key={index} className="w-[285px] block">
-      <a href="" className="bg-[#FFF7EE] px-9 py-6 rounded-2xl block">
+    <div key={index} className={cn("w-[285px] block", className)}>
+      <a
+        href={link}
+        className="bg-[#FFF7EE] relative px-9 py-6 rounded-2xl block"
+      >
+        {isLoading && (
+          <div className="absolute top-0 left-0 w-full h-full z-10">
+            <ImgSkeleton />
+          </div>
+        )}
         <img
+          key={card.img}
           src={card.img}
           className="w-[210px] h-[212px] bg-[#FFF7EE]"
           alt="pizzaImage"

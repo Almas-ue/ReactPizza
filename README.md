@@ -12,6 +12,7 @@
 - Lucide React
 - React-Hook-Form
 - Zustand
+- Redux
 
 ### Для запуска проекта
 ---
@@ -84,3 +85,13 @@ Open http://localhost:3000 with your browser to see the result.
 -  Исправлена стиль карт-тело
 -  Добавил json-server
 -  Добавил Zustand для филтра и категорий.
+  
+## React-Pizza 0.8.5
+- Добавил Redux.
+- Переписал price, category под redux.
+- Поменял логику в price, теперь минимальное значение всегда будет меньше, а макс максимальное.
+- Перекинул файл filter из components -> features.
+- Сделал рефактор в filter.
+- Появилась папка hooks
+- Удалил файл CategoryProvider. Это React Context API. Дефолтный provider из react.
+- Поменял файл category из components и основную логику написал в файле categoryBlock. Файлы из components только для переимпользования!

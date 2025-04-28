@@ -3,14 +3,10 @@ import { create } from "zustand";
 interface State {
   canCollection: boolean;
   newProduct: boolean;
-  priceMin: number;
-  priceMax: number;
   ingredient: string[];
 
   setCanCollection: (canCollection: boolean) => void;
   setNewProduct: (newProduct: boolean) => void;
-  setPriceMin: (priceMin: number) => void;
-  setPriceMax: (priceMax: number) => void;
   setIngredient: (ingredient: string[]) => void;
 }
 
@@ -31,14 +27,10 @@ export const ingredientList = [
 export const FiltrationState = create<State>()((set) => ({
   canCollection: false,
   newProduct: false,
-  priceMin: 0,
-  priceMax: 0,
   ingredient: [],
 
   setCanCollection: (canCollection: boolean) => set({ canCollection }),
   setNewProduct: (newProduct: boolean) => set({ newProduct }),
-  setPriceMin: (priceMin: number) => set({ priceMin }),
-  setPriceMax: (priceMax: number) => set({ priceMax }),
   setIngredient: (ingredient: string[]) => {
     set({ ingredient });
   },

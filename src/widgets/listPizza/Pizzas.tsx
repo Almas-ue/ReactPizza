@@ -8,6 +8,7 @@ import { FiltrationState } from "@/state/filtration";
 import Card from "@/components/ui/card";
 import PaginationPages from "../pages/PaginationPages";
 import NotFound from "@/components/ui/notFound";
+import { useCategory, usePricemax, usePricemin } from "@/hooks/useReducer";
 
 interface Props {
   className?: string;
@@ -16,10 +17,15 @@ interface Props {
 const Pizzas: FC<Props> = ({ className }) => {
   const [pizza, setPizza] = useState<any>([]);
 
-  const categoryData = CategoryState((state) => state.stateCategory);
+  const category = useCategory();
   const getIngredient = FiltrationState((state) => state.ingredient);
-  const getMinPrice = FiltrationState((state) => state.priceMin);
-  const getMaxPrice = FiltrationState((state) => state.priceMax);
+  const minPrice = usePricemin();
+  const maxPrice = usePricemax();
+
+  useEffect(() => {
+    console.log("min: ", minPrice);
+    console.log("max: ", maxPrice);
+  }, [minPrice, maxPrice]);
 
   const sortData = useContext(SortContext);
   const [sort]: any = sortData ?? ListSort.DEFAULT;
@@ -37,17 +43,17 @@ const Pizzas: FC<Props> = ({ className }) => {
 
   useEffect(() => {
     let categoryFilter =
-      categoryData !== "Все" && pizza.length > 0
+      category !== "Все" && pizza.length > 0
         ? pizza.filter(
             (card: { category: string[] }) =>
               Array.isArray(card.category) &&
-              card.category.some((c: string) => categoryData.includes(c))
+              card.category.some((c: string) => category.includes(c))
           )
         : pizza.slice();
 
-    getMinPrice && getMaxPrice
+    minPrice && maxPrice
       ? (categoryFilter = categoryFilter.filter((card: any) => {
-          return card.price >= getMinPrice && card.price <= getMaxPrice;
+          return card.price >= minPrice && card.price <= maxPrice;
         }))
       : categoryFilter;
 
@@ -75,7 +81,7 @@ const Pizzas: FC<Props> = ({ className }) => {
     else if (sort === ListSort.DEFAULT) setFilter(pizza.slice());
 
     setFilter(categoryFilter);
-  }, [pizza, categoryData, sort, getMinPrice, getMaxPrice, getIngredient]);
+  }, [pizza, category, sort, minPrice, maxPrice, getIngredient]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const cardCount = 6;
@@ -89,11 +95,11 @@ const Pizzas: FC<Props> = ({ className }) => {
         .slice((currentPage - 1) * cardCount, currentPage * cardCount)
         .map((card, index) => (
           <Card
-          key={index}
+            key={index}
             card={card}
             index={index}
             countList={cardCount}
-            category={categoryData}
+            category={category}
           />
         ))}
       <PaginationPages
