@@ -1,7 +1,7 @@
 import CategoryBtn from "@/components/ui/categoryBtn";
 import { useCategory } from "@/hooks/useReducer";
 import { cn } from "@/lib/utils";
-import { cate, setCategory } from "@/store/category/catogoryRedux";
+import { cate, setCategory } from "@/store/catogoryRedux";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
 

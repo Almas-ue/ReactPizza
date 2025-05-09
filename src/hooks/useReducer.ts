@@ -12,3 +12,7 @@ export const usePricemin = () => {
 export const usePricemax = () => {
   return useSelector((state: StateType) => state.price.value.max);
 };
+
+export const useSort = () => {
+  return useSelector((state: StateType) => state.sort.sorting);
+};

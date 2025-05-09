@@ -1,12 +1,10 @@
-import Filter from "@/features/filter";
-import Categorias from "../widgets/categorias";
-import Header from "../widgets/Header/Header";
-import Container from "@/components/ui/container";
-import Pizzas from "@/widgets/listPizza/Pizzas";
 import React from "react";
-import SortCard from "@/providers/sortCard";
 import { Provider } from "react-redux";
 import store from "@/store/store";
+import { BrowserRouter, Route, Routes } from "react-router";
+
+import Header from "../widgets/Header/Header";
+import { routerList } from "@/router/routerList";
 
 interface app {
   categoryProvider?: JSX.IntrinsicElements;
@@ -14,16 +12,18 @@ interface app {
 
 const App: React.FC<app> = () => {
   return (
-    <Provider store={store}>
-      <SortCard>
-        <Header />
-        <Categorias />
-        <Container className="flex gap-[48px] mt-9">
-          <Filter />
-          <Pizzas />
-        </Container>
-      </SortCard>
-    </Provider>
+    <div className="w-full h-screen">
+      <BrowserRouter>
+        <Provider store={store}>
+          <Header />
+          <Routes>
+            {routerList.map((route, index) => (
+              <Route key={index} path={route.path} Component={route.element} />
+            ))}
+          </Routes>
+        </Provider>
+      </BrowserRouter>
+    </div>
   );
 };
 

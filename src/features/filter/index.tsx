@@ -1,21 +1,20 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { FiltrationState } from "@/state/filtration";
+import { setMaxPrice, setMinPrice } from "@/store/priceState";
 
 import { Button } from "./../../components/ui/button";
 import ProductInfo from "./components/productInfo";
 import PriceComponent from "./components/priceComponent";
-import { useDispatch } from "react-redux";
 import Ingredient from "./components/ingredient";
-import { setMaxPrice, setMinPrice } from "@/store/price/priceState";
 
 const Filter = () => {
   const setIngredient = FiltrationState((state) => state.setIngredient);
   const [priceMinFilter, setPriceMinFilter] = useState(0);
   const [priceMaxFilter, setPriceMaxFilter] = useState(0);
+  const [ingredientListfilter, setIngredientList] = useState<string[]>([]);
 
   const dispatch = useDispatch();
-
-  const [ingredientListfilter, setIngredientList] = useState<string[]>([]);
 
   return (
     <aside className="w-[245px]">

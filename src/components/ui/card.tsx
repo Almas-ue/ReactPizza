@@ -1,9 +1,11 @@
 import { Button } from "./button";
 import { FC, useState } from "react";
-import ImgSkeleton from "./imgSkeleton";
 import { cn } from "@/lib/utils";
+import ImgSkeleton from "./imgSkeleton";
+import { Link } from "react-router-dom";
 
 export type typeList = {
+  id: number;
   img: string;
   name: string;
   category: string[];
@@ -16,19 +18,18 @@ interface props {
   index: number;
   card: typeList;
   category?: string;
-  link?: string;
   className?: string;
 }
 
-const Card: FC<props> = ({ index, countList, card, link, className }) => {
+const Card: FC<props> = ({ index, countList, card, className }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   if (index >= countList) return null;
 
   return (
     <div key={index} className={cn("w-[285px] block", className)}>
-      <a
-        href={link}
+      <Link
+        to={`/pizza/${card.id}`}
         className="bg-[#FFF7EE] relative px-9 py-6 rounded-2xl block"
       >
         {isLoading && (
@@ -43,7 +44,7 @@ const Card: FC<props> = ({ index, countList, card, link, className }) => {
           alt="pizzaImage"
           onLoad={() => setIsLoading(false)}
         />
-      </a>
+      </Link>
       <div className="mt-4">
         <h4 className="font-bold text-2xl text-black">{card.name}</h4>
         <p className="text-[#B1B1B1] text-[14px] mt-2 h-[63px] line-clamp-3 overflow-y-hidden">

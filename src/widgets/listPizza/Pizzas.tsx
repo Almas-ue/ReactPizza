@@ -1,14 +1,20 @@
-import { FC, useContext, useEffect, useState } from "react";
-import { ListSort, SortContext } from "@/providers/sortCard";
+import { FC, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-
-import { CategoryState } from "@/state/categoryState";
+import {
+  useCategory,
+  usePricemax,
+  usePricemin,
+  useSort,
+} from "@/hooks/useReducer";
 import { FiltrationState } from "@/state/filtration";
 
 import Card from "@/components/ui/card";
-import PaginationPages from "../pages/PaginationPages";
+import PaginationPages from "./../pages/PaginationPages";
 import NotFound from "@/components/ui/notFound";
-import { useCategory, usePricemax, usePricemin } from "@/hooks/useReducer";
+import { apiConnect } from "@/api/apiPizza";
+import { ListSort } from "@/store/sortState";
+// import { getFilteredPizza } from "./getFilteredPizza";
+// import { ListSort } from "@/store/sortState";
 
 interface Props {
   className?: string;
@@ -16,34 +22,37 @@ interface Props {
 
 const Pizzas: FC<Props> = ({ className }) => {
   const [pizza, setPizza] = useState<any>([]);
-
-  const category = useCategory();
   const getIngredient = FiltrationState((state) => state.ingredient);
-  const minPrice = usePricemin();
-  const maxPrice = usePricemax();
+  const [nameSort, category, minPrice, maxPrice] = [
+    useSort(),
+    useCategory(),
+    usePricemin(),
+    usePricemax(),
+  ];
 
   useEffect(() => {
-    console.log("min: ", minPrice);
-    console.log("max: ", maxPrice);
-  }, [minPrice, maxPrice]);
-
-  const sortData = useContext(SortContext);
-  const [sort]: any = sortData ?? ListSort.DEFAULT;
-
-  useEffect(() => {
-    const getPizzas = async () => {
-      await fetch("http://localhost:3000/pizza").then((res) => {
-        res.json().then((data) => setPizza(data));
-      });
-    };
-    getPizzas();
+    apiConnect().then((data) => setPizza(data));
   }, []);
 
-  let [filterCard, setFilter] = useState<any[]>([]);
+  const [filterCard, setFilter] = useState<any[]>([]);
 
   useEffect(() => {
-    let categoryFilter =
-      category !== "Все" && pizza.length > 0
+    if (pizza.length <= 0) return;
+
+    /*setFilter(
+      getFilteredPizza(
+        pizza,
+        filterCard,
+        nameSort,
+        category,
+        minPrice,
+        maxPrice,
+        getIngredient
+      )
+    );*/
+
+    let filtered =
+      category !== "Все"
         ? pizza.filter(
             (card: { category: string[] }) =>
               Array.isArray(card.category) &&
@@ -51,37 +60,30 @@ const Pizzas: FC<Props> = ({ className }) => {
           )
         : pizza.slice();
 
+    getIngredient.length > 0
+      ? (filtered = pizza.filter((card: any) =>
+          getIngredient.some((ing: string) => card.ingredient.includes(ing))
+        ))
+      : filtered;
+
     minPrice && maxPrice
-      ? (categoryFilter = categoryFilter.filter((card: any) => {
-          return card.price >= minPrice && card.price <= maxPrice;
-        }))
-      : categoryFilter;
+      ? (filtered = pizza.filter(
+          (card: any) => card.price >= minPrice && card.price <= maxPrice
+        ))
+      : filtered;
 
-    getIngredient > []
-      ? (categoryFilter = categoryFilter.filter((card: any) => {
-          console.log(getIngredient);
-          return getIngredient.some((ing: string) =>
-            card.ingredient.includes(ing)
-          );
-        }))
-      : categoryFilter;
-
-    if (sort === ListSort.DOWN)
-      setFilter(
-        categoryFilter.sort(
-          (a: { price: number }, b: { price: number }) => b.price - a.price
-        )
+    if (nameSort == ListSort.DOWN)
+      filtered = filterCard.sort(
+        (a: { price: number }, b: { price: number }) => b.price - a.price
       );
-    else if (sort === ListSort.UP)
-      setFilter(
-        categoryFilter.sort(
-          (a: { price: number }, b: { price: number }) => a.price - b.price
-        )
+    else if (nameSort == ListSort.UP)
+      filtered = filterCard.sort(
+        (a: { price: number }, b: { price: number }) => a.price - b.price
       );
-    else if (sort === ListSort.DEFAULT) setFilter(pizza.slice());
+    else if (nameSort === ListSort.DEFAULT) filtered;
 
-    setFilter(categoryFilter);
-  }, [pizza, category, sort, minPrice, maxPrice, getIngredient]);
+    setFilter(filtered);
+  }, [pizza, category, nameSort, minPrice, maxPrice, getIngredient]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const cardCount = 6;
