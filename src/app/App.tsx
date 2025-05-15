@@ -1,10 +1,10 @@
 import React from "react";
 import { Provider } from "react-redux";
-import store from "@/store/store";
 import { BrowserRouter, Route, Routes } from "react-router";
+import { routerList } from "@/router/routerList";
+import store from "@/store/store";
 
 import Header from "../widgets/Header/Header";
-import { routerList } from "@/router/routerList";
 
 interface app {
   categoryProvider?: JSX.IntrinsicElements;

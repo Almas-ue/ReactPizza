@@ -11,8 +11,10 @@ import { FiltrationState } from "@/state/filtration";
 import Card from "@/components/ui/card";
 import PaginationPages from "./../pages/PaginationPages";
 import NotFound from "@/components/ui/notFound";
-import { apiConnect } from "@/api/apiPizza";
 import { ListSort } from "@/store/sortState";
+import { getPizza } from "@/hooks/getApi";
+import { useDispatch } from "react-redux";
+import { setStateBusket } from "@/store/busket";
 // import { getFilteredPizza } from "./getFilteredPizza";
 // import { ListSort } from "@/store/sortState";
 
@@ -21,7 +23,7 @@ interface Props {
 }
 
 const Pizzas: FC<Props> = ({ className }) => {
-  const [pizza, setPizza] = useState<any>([]);
+  const pizza = getPizza();
   const getIngredient = FiltrationState((state) => state.ingredient);
   const [nameSort, category, minPrice, maxPrice] = [
     useSort(),
@@ -29,10 +31,7 @@ const Pizzas: FC<Props> = ({ className }) => {
     usePricemin(),
     usePricemax(),
   ];
-
-  useEffect(() => {
-    apiConnect().then((data) => setPizza(data));
-  }, []);
+  const dispatch = useDispatch();
 
   const [filterCard, setFilter] = useState<any[]>([]);
 
@@ -99,9 +98,10 @@ const Pizzas: FC<Props> = ({ className }) => {
           <Card
             key={index}
             card={card}
-            index={index}
+            keyArr={index}
             countList={cardCount}
             category={category}
+            onClick={() => dispatch(setStateBusket(card))}
           />
         ))}
       <PaginationPages

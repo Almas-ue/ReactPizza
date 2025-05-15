@@ -16,3 +16,19 @@ export const usePricemax = () => {
 export const useSort = () => {
   return useSelector((state: StateType) => state.sort.sorting);
 };
+
+export const useSizePizza = () => {
+  return useSelector((state: StateType) => state.menuSizePizza.value);
+};
+
+export const useTradPizza = () => {
+  return useSelector((state: StateType) => state.tradionalPizza.value);
+};
+
+export const useActiveSidebar = () => {
+  return useSelector((state: StateType) => state.activeSidebar.value);
+};
+
+export const useBusket = () => {
+  return useSelector((state: StateType) => state.busket.value);
+};

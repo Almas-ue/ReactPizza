@@ -1,5 +1,6 @@
 import Layouts from "@/app/layouts";
 import Error from "@/widgets/404/error";
+import PizzaPage from "@/widgets/pages/pizzaPage";
 
 export const routerList = [
   {
@@ -8,7 +9,7 @@ export const routerList = [
   },
   {
     path: "/pizza/:page",
-    element: Layouts,
+    element: PizzaPage,
   },
   {
     path: "*",
