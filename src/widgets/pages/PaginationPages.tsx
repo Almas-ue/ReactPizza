@@ -80,7 +80,7 @@ const PaginationPages: FC<props> = ({
             className={cn(
               currentPage === 1
                 ? "cursor-not-allowed hover:text-[#888888]"
-                : "border border-primary text-white"
+                : "border border-primary text-primary"
             )}
             href="#"
           />
@@ -91,7 +91,7 @@ const PaginationPages: FC<props> = ({
             <PaginationLink
               isActive={currentPage === page}
               className={cn(
-                currentPage === page ? "text-white" : "text-primary"
+                currentPage === page ? "text-white bg-primary" : "text-primary"
               )}
               onClick={() => paginate(page)}
               href="#"
@@ -127,7 +127,7 @@ const PaginationPages: FC<props> = ({
             isActive={currentPage < countPage}
             className={cn(
               currentPage < countPage
-                ? "text-white border border-primary"
+                ? "text-primary border border-primary"
                 : "cursor-not-allowed text-[#888888]"
             )}
             onClick={() =>

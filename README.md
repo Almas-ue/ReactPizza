@@ -95,3 +95,9 @@ Open http://localhost:3000 with your browser to see the result.
 - Появилась папка hooks
 - Удалил файл CategoryProvider. Это React Context API. Дефолтный provider из react.
 - Поменял файл category из components и основную логику написал в файле categoryBlock. Файлы из components только для переимпользования!
+
+## React-Pizza 0.9.0
+- Добавил "Корзина" в виде sidebar
+- Теперь кнопка в пиццах сохраняет в sessionstorage
+- После закрытия вкладки, список пиццы будут сохраняться(закрытия браузера в целом, очистит все сохранения).
+- Исправил баги.

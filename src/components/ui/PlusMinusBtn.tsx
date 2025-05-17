@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 
 interface Props {
   text: number;
-  firstBtn: () => void;
-  secondBtn: () => void;
+  firstBtn: (obj?: any) => void;
+  secondBtn: (obj?: any) => void;
   className?: string;
 }
 

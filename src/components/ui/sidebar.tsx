@@ -1,10 +1,10 @@
-import { useActiveSidebar } from "@/hooks/useReducer";
-import { cn } from "@/lib/utils";
-import { setActiveSidebar } from "@/store/activeSidebar";
-import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { cn } from "@/lib/utils";
+import { setActiveSidebar } from "@/store/activeSidebar";
+import { useActiveSidebar } from "@/hooks/useReducer";
 import { SidebarProps } from "../types/sidebarTypes";
+import { X } from "lucide-react";
 
 const Sidebar: React.FC<SidebarProps> = ({ children, className }) => {
   const open = useActiveSidebar();

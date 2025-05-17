@@ -1,5 +1,5 @@
 export const sessionStorageUtil = {
-  set: (key: string, value: any) =>
+  set: (key: string, value: any[]) =>
     sessionStorage.setItem(key, JSON.stringify(value)),
   get: (key: string) => {
     const item = sessionStorage.getItem(key);
