@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import {
-  useBusket,
   useCategory,
   usePricemax,
   usePricemin,
@@ -33,7 +32,6 @@ const Pizzas: FC<Props> = ({ className }) => {
     usePricemax(),
   ];
   const dispatch = useDispatch();
-  const bukset = useBusket();
 
   const [filterCard, setFilter] = useState<any[]>([]);
 

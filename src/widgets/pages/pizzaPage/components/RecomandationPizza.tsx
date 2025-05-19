@@ -1,6 +1,8 @@
 import Card from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { setStateBusket } from "@/store/busket";
 import { FC } from "react";
+import { useDispatch } from "react-redux";
 
 interface Props {
   className?: string;
@@ -42,13 +44,21 @@ const testarr = [
 ];
 
 const RecomandationPizza: FC<Props> = ({ className }) => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="mt-20 pb-10">
         <h2 className="text-3xl">Рекомендуем</h2>
         <div className={cn("mt-7 flex gap-[25px]", className)}>
-          {testarr.map((item, index) => (
-            <Card key={item.name} keyArr={index} countList={2} card={item} />
+          {testarr.map((item: any, index: number) => (
+            <Card
+              key={item.name}
+              keyArr={index}
+              countList={2}
+              card={item}
+              onClick={() => dispatch(setStateBusket(item))}
+            />
           ))}
         </div>
       </div>

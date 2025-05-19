@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPizza } from "@/hooks/getApi";
 
 import { UrlInfo } from "./locationInfo";
@@ -9,6 +9,8 @@ import Ingredients from "./components/ingredients";
 import MenuNameSize from "./components/menuNameSize";
 import BreadcrumbPizza from "./components/breadcrumbPizza";
 import RecomandationPizza from "./components/RecomandationPizza";
+import { Button } from "@/components/ui/button";
+import { setStateBusket } from "@/store/busket";
 
 const PizzaPage = () => {
   const [priceIngredient, setPriceIngredient] = useState<number>(0);
@@ -19,6 +21,8 @@ const PizzaPage = () => {
   const ingredientInfo = useSelector(
     (state: any) => state.ingredientInfo.value
   );
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setPriceIngredient(
@@ -56,9 +60,15 @@ const PizzaPage = () => {
                 <Ingredients />
 
                 <div className="mt-auto">
-                  <button className="block bg-primary text-white rounded-2xl px-6 py-4 text-xl font-semibold hover:bg-primary/90 transition-all duration-100">
+                  <Button
+                    className="
+                    block bg-primary rounded-2xl px-6 h-14 
+                    text-xl font-semibold text-white
+                    hover:bg-primary/90 transition-all duration-100"
+                    onClick={() => dispatch(setStateBusket(pizzaItem))}
+                  >
                     Добавить в корзину за {pizzaItem.price + priceIngredient} ₽
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

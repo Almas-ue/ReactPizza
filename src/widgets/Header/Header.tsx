@@ -2,12 +2,13 @@ import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/container";
 import { Input } from "@/components/ui/input";
 
-import { ShoppingCart, User } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 
 import logo from "./images/logo.svg";
 import { useDispatch } from "react-redux";
 import { setActiveSidebar } from "@/store/activeSidebar";
 import AppSidebar from "@/features/appSidebar";
+import NavigateBtnHeader from "@/components/ui/navigateBtnHeader";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -30,12 +31,7 @@ const Header = () => {
             />
           </div>
           <div className="flex items-center gap-[15px]">
-            <Button
-              className="px-[14px] py-[22px] font-semibold"
-              variant="primary"
-            >
-              <User /> Войти
-            </Button>
+            <NavigateBtnHeader />
             <Button
               className="px-[14px] py-[22px] font-semibold"
               variant="primary"

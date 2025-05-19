@@ -9,18 +9,21 @@ import {
 } from "@/components/ui/sidebar";
 import { useDispatch } from "react-redux";
 import { setStateBusket } from "@/store/busket";
+import EmptySidebar from "@/components/ui/emptySidebar";
+import { Button } from "@/components/ui/button";
+import { MoveRight } from "lucide-react";
+import { Link } from "react-router";
 
 const AppSidebar = () => {
   const buskets: any[] = useBusket();
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
 
-  return (
+  return buskets.length ? (
     <Sidebar>
       <HeaderSidebar>
         <span>
-          В корзине{" "}
-          <strong>{buskets ? buskets.length : 0} товаров</strong>
+          В корзине <strong>{buskets ? buskets.length : 0} товаров</strong>
           <span
             className="text-primary cursor-pointer ml-3"
             onClick={() => dispatch(setStateBusket([]))}
@@ -56,15 +59,37 @@ const AppSidebar = () => {
           </div>
         ))}
       </ContentSidebar>
-      <FooterSidebar>
-        <p>footer</p>
-        <p>footer</p>
-        <p>footer</p>
-        <p>footer</p>
+      <FooterSidebar className="bg-white">
+        <div className="p-9">
+          <p className="flex justify-between items-baseline">
+            Итого:
+            <span className="flex-grow border-b border-dashed border-gray-400 mx-2" />
+            <strong>
+              {buskets.reduce((acc, item) => acc + item.price, 0)} ₽
+            </strong>
+          </p>
+          <p className="flex justify-between items-baseline">
+            Налог 5%:
+            <span className="flex-grow border-b border-dashed border-gray-400 mx-2" />
+            <strong>
+              {buskets.reduce((acc, item) => acc + item.price, 0) * 0.05} ₽
+            </strong>
+          </p>
+          <Link to={"/order"}>
+            <Button className="w-full mt-5 rounded-2xl py-[24px]">
+              Оформить заказ <MoveRight className="ml-5" />
+            </Button>
+          </Link>
+        </div>
       </FooterSidebar>
+    </Sidebar>
+  ) : (
+    <Sidebar className="bg-white">
+      <ContentSidebar>
+        <EmptySidebar />
+      </ContentSidebar>
     </Sidebar>
   );
 };
 
 export default AppSidebar;
-
