@@ -75,7 +75,7 @@ const AppSidebar = () => {
               {buskets.reduce((acc, item) => acc + item.price, 0) * 0.05} ₽
             </strong>
           </p>
-          <Link to={"/order"}>
+          <Link to={"/order/history"}>
             <Button className="w-full mt-5 rounded-2xl py-[24px]">
               Оформить заказ <MoveRight className="ml-5" />
             </Button>

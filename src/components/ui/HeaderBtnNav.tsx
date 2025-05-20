@@ -17,8 +17,8 @@ interface Props {
 }
 
 export const listNav = [
-  { name: "Настройки", href: "/testError" },
-  { name: "Заказы", href: "/pizza/1" },
+  { name: "Оформить заказ", href: "/order/arrange" },
+  { name: "Заказы", href: "/order/history" },
   { name: "Выйти", href: "/", styleLink: "border-t" },
 ];
 

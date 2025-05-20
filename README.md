@@ -107,3 +107,6 @@ Open http://localhost:3000 with your browser to see the result.
 - Если корзина пуста, в sidebar это будет показано.
 - Добавил Footer в sidebar.
 - Сделал счётчик в Footer sidebar.
+
+## React-Pizza 0.9.3
+- Добавлены заказы: Оформление заказа, Мои заказы.

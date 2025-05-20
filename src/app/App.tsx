@@ -5,6 +5,7 @@ import { routerList } from "@/router/routerList";
 import store from "@/store/store";
 
 import Header from "../widgets/Header/Header";
+import Container from "@/components/ui/container";
 
 interface app {
   categoryProvider?: JSX.IntrinsicElements;
@@ -16,11 +17,17 @@ const App: React.FC<app> = () => {
       <BrowserRouter>
         <Provider store={store}>
           <Header />
-          <Routes>
-            {routerList.map((route, index) => (
-              <Route key={index} path={route.path} Component={route.element} />
-            ))}
-          </Routes>
+          <Container>
+            <Routes>
+              {routerList.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  Component={route.element}
+                />
+              ))}
+            </Routes>
+          </Container>
         </Provider>
       </BrowserRouter>
     </div>
