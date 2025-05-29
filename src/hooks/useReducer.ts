@@ -32,3 +32,7 @@ export const useActiveSidebar = () => {
 export const useBusket = () => {
   return useSelector((state: StateType) => state.busket.value);
 };
+
+export const useTotalPrice = () => {
+  return useSelector((state: StateType) => state.totalPrice.total);
+};

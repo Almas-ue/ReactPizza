@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useBusket } from "@/hooks/useReducer";
 import PlusMinusBtn from "@/components/ui/PlusMinusBtn";
 import {
@@ -8,25 +7,31 @@ import {
   Sidebar,
 } from "@/components/ui/sidebar";
 import { useDispatch } from "react-redux";
-import { setStateBusket } from "@/store/busket";
+import {
+  decCountBusket,
+  destroyState,
+  incCountBusket,
+  removeItem,
+} from "@/store/busket";
 import EmptySidebar from "@/components/ui/emptySidebar";
 import { Button } from "@/components/ui/button";
-import { MoveRight } from "lucide-react";
+import { MoveRight, Trash2 } from "lucide-react";
 import { Link } from "react-router";
+import { PriceTotalBLock } from "@/components/ui/priceTotalBLock";
 
 const AppSidebar = () => {
   const buskets: any[] = useBusket();
-  const [count, setCount] = useState(1);
   const dispatch = useDispatch();
 
+  console.log(buskets);
   return buskets.length ? (
-    <Sidebar>
+    <Sidebar className="text-nowrap">
       <HeaderSidebar>
         <span>
           В корзине <strong>{buskets ? buskets.length : 0} товаров</strong>
           <span
             className="text-primary cursor-pointer ml-3"
-            onClick={() => dispatch(setStateBusket([]))}
+            onClick={() => dispatch(destroyState())}
           >
             Удалить все
           </span>
@@ -39,19 +44,28 @@ const AppSidebar = () => {
               <img src={item.img} className="size-16" alt={item.name} />
             </div>
             <div className="w-[260px]">
-              <p className="text-[16px]">
-                <strong>{item.name}</strong>
-              </p>
-              <p className="text-[14px] text-gray-400">
-                Средняя {item.size?.diameter} Вес {item.size?.weight}
-              </p>
+              <div className="flex justify-between">
+                <div className="">
+                  <p className="text-[16px]">
+                    <strong>{item.name}</strong>
+                  </p>
+                  <p className="text-[14px] text-gray-400">
+                    Средняя {item.size?.diameter} Вес {item.size?.weight}
+                  </p>
+                </div>
+                <Trash2
+                  className="cursor-pointer"
+                  onClick={() => dispatch(removeItem(item.id))}
+                />
+              </div>
+
               <div className="border-b my-3" />
               <div className="flex justify-between h-7">
                 <PlusMinusBtn
-                  text={count}
+                  text={item.count}
                   className="size-8"
-                  firstBtn={() => setCount(count > 0 ? count - 1 : 0)}
-                  secondBtn={() => setCount(count + 1)}
+                  MinusBtn={() => dispatch(decCountBusket(item.id))}
+                  PlusdBtn={() => dispatch(incCountBusket(item.id))}
                 />
                 <p className="font-bold">{item.price}</p>
               </div>
@@ -61,21 +75,8 @@ const AppSidebar = () => {
       </ContentSidebar>
       <FooterSidebar className="bg-white">
         <div className="p-9">
-          <p className="flex justify-between items-baseline">
-            Итого:
-            <span className="flex-grow border-b border-dashed border-gray-400 mx-2" />
-            <strong>
-              {buskets.reduce((acc, item) => acc + item.price, 0)} ₽
-            </strong>
-          </p>
-          <p className="flex justify-between items-baseline">
-            Налог 5%:
-            <span className="flex-grow border-b border-dashed border-gray-400 mx-2" />
-            <strong>
-              {buskets.reduce((acc, item) => acc + item.price, 0) * 0.05} ₽
-            </strong>
-          </p>
-          <Link to={"/order/history"}>
+          <PriceTotalBLock prices={buskets} text="Итого" />
+          <Link to={"/order/arrange"}>
             <Button className="w-full mt-5 rounded-2xl py-[24px]">
               Оформить заказ <MoveRight className="ml-5" />
             </Button>

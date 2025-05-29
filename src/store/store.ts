@@ -7,6 +7,7 @@ import tradionalPizza from "./menuTradiotional";
 import ingredientInfo from "./ingredientState";
 import activeSidebar from "./activeSidebar";
 import busket from "./busket";
+import totalPrice from "./priceTotal";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     ingredientInfo: ingredientInfo,
     activeSidebar: activeSidebar,
     busket: busket,
+    totalPrice: totalPrice,
   },
 });
 

@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 import ImgSkeleton from "./imgSkeleton";
 import { Link } from "react-router-dom";
 import ImageBlock from "./imageBlock";
+import { useBusket } from "@/hooks/useReducer";
+import BusketPlsMns from "./busketPlsMns";
 
 export type typeList = {
   id: number;
@@ -12,6 +14,7 @@ export type typeList = {
   category?: string[];
   ingredient: string;
   price: number;
+  count: number;
 };
 
 interface props {
@@ -25,6 +28,7 @@ interface props {
 
 const Card: FC<props> = ({ keyArr, countList, card, onClick, className }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const busket = useBusket();
 
   if (keyArr >= countList) return null;
 
@@ -36,13 +40,6 @@ const Card: FC<props> = ({ keyArr, countList, card, onClick, className }) => {
             <ImgSkeleton />
           </div>
         )}
-        {/* <img
-          key={card.img}
-          src={card.img}
-          className="w-[210px] h-[212px] bg-[#FFF7EE]"
-          alt="pizzaImage"
-          onLoad={() => setIsLoading(false)}
-        /> */}
         <ImageBlock img={card.img} alt={card.name} imgSetting={setIsLoading} />
       </Link>
       <div className="mt-4">
@@ -52,12 +49,16 @@ const Card: FC<props> = ({ keyArr, countList, card, onClick, className }) => {
         </p>
         <div className="flex justify-between items-center mt-3">
           <p className="text-xl font-bold">от {card.price} ₽</p>
-          <Button
-            className="bg-primary font-semibold text-xs"
-            onClick={onClick}
-          >
-            Собрать
-          </Button>
+          {busket.some((item: any) => item.id === card.id) ? (
+            <BusketPlsMns itemId={card.id} />
+          ) : (
+            <Button
+              className="bg-primary font-semibold text-xs"
+              onClick={onClick}
+            >
+              Собрать
+            </Button>
+          )}
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import {
+  useBusket,
   useCategory,
   usePricemax,
   usePricemin,
@@ -8,7 +9,7 @@ import {
 } from "@/hooks/useReducer";
 import { FiltrationState } from "@/state/filtration";
 
-import Card from "@/components/ui/card";
+import Card, { typeList } from "@/components/ui/card";
 import PaginationPages from "./../pages/PaginationPages";
 import NotFound from "@/components/ui/notFound";
 import { ListSort } from "@/store/sortState";
@@ -16,7 +17,6 @@ import { getPizza } from "@/hooks/getApi";
 import { useDispatch } from "react-redux";
 import { setStateBusket } from "@/store/busket";
 // import { getFilteredPizza } from "./getFilteredPizza";
-// import { ListSort } from "@/store/sortState";
 
 interface Props {
   className?: string;
@@ -30,6 +30,7 @@ const Pizzas: FC<Props> = ({ className }) => {
     useCategory(),
     usePricemin(),
     usePricemax(),
+    useBusket(),
   ];
   const dispatch = useDispatch();
 
